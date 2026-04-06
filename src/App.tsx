@@ -1,9 +1,10 @@
 import Classifier from "./Classifier"
+import Results from "./Results"
 
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-900 text-white px-4 py-12">
-      <div className="max-w-3xl mx-auto flex flex-col gap-10">
+      <div className="max-w-3xl mx-auto flex flex-col gap-16">
 
         <div className="text-center">
           <h1 className="text-3xl font-bold text-white">NLP Classifier Playground</h1>
@@ -27,6 +28,8 @@ export default function App() {
             placeholder="e.g. Seven silly swans swam silently."
           />
         </div>
+
+        <Results />
 
         <div className="text-center text-xs text-slate-600">
           Built with Logistic Regression + LinearSVC · scikit-learn ·{" "}
