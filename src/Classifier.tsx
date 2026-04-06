@@ -43,21 +43,22 @@ export default function Classifier({ task, title, description, placeholder }: Pr
 
   const confidencePct = result ? Math.round(result.confidence * 100) : 0
 
-  const labelColor =
-    result?.label === "positive" ? "text-emerald-400"
-    : result?.label === "negative" ? "text-rose-400"
-    : result?.label === "alliterative" ? "text-teal-400"
+  const isPositive = result?.label === "positive" || result?.label === "alliterative"
+  const labelColor = result
+    ? isPositive ? "text-teal-400" : "text-rose-400"
     : "text-slate-400"
 
+  const barColor = isPositive ? "bg-teal-500" : "bg-rose-500"
+
   return (
-    <div className="bg-slate-800 rounded-2xl p-6 flex flex-col gap-4">
-      <div>
-        <h2 className="text-lg font-semibold text-white">{title}</h2>
-        <p className="text-sm text-slate-400 mt-1">{description}</p>
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col gap-4 hover:border-slate-700 transition-colors">
+      <div className="flex flex-col gap-1">
+        <h3 className="text-base font-semibold text-white font-mono">{title}</h3>
+        <p className="text-xs text-slate-500">{description}</p>
       </div>
 
       <textarea
-        className="w-full bg-slate-700 text-white rounded-xl p-3 text-sm resize-none outline-none focus:ring-2 focus:ring-teal-500"
+        className="w-full bg-slate-800 text-white rounded-xl p-3 text-sm resize-none outline-none focus:ring-1 focus:ring-teal-500 placeholder:text-slate-600 transition-all"
         rows={3}
         placeholder={placeholder}
         value={sentence}
@@ -68,25 +69,26 @@ export default function Classifier({ task, title, description, placeholder }: Pr
       <button
         onClick={predict}
         disabled={loading || !sentence.trim()}
-        className="bg-teal-500 hover:bg-teal-400 disabled:opacity-40 text-white font-medium rounded-xl py-2 px-4 transition-colors"
+        className="bg-teal-500 hover:bg-teal-400 disabled:opacity-30 disabled:cursor-not-allowed text-white text-sm font-mono font-medium rounded-xl py-2.5 px-4 transition-all"
       >
-        {loading ? "Predicting..." : "Predict"}
+        {loading ? "running model..." : "predict →"}
       </button>
 
-      {error && <p className="text-rose-400 text-sm">{error}</p>}
+      {error && <p className="text-rose-400 text-xs font-mono">{error}</p>}
 
       {result && (
-        <div className="flex flex-col gap-2">
-          <p className="text-sm text-slate-400">
-            Prediction: <span className={`font-semibold ${labelColor}`}>{result.label}</span>
-          </p>
-          <div className="w-full bg-slate-700 rounded-full h-2">
+        <div className="flex flex-col gap-2 pt-1">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-slate-500 font-mono">prediction</span>
+            <span className={`text-sm font-bold font-mono ${labelColor}`}>{result.label}</span>
+          </div>
+          <div className="w-full bg-slate-800 rounded-full h-1.5">
             <div
-              className="bg-teal-500 h-2 rounded-full transition-all duration-500"
+              className={`${barColor} h-1.5 rounded-full transition-all duration-700`}
               style={{ width: `${confidencePct}%` }}
             />
           </div>
-          <p className="text-xs text-slate-500 text-right">{confidencePct}% confidence</p>
+          <p className="text-xs text-slate-600 font-mono text-right">{confidencePct}% confidence</p>
         </div>
       )}
     </div>
