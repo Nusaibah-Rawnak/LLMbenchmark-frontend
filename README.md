@@ -1,16 +1,19 @@
-# NLP Classifier Playground
+# LLM Benchmark Frontend
 
-An interactive web app for real-time text classification, powered by models trained on sentiment analysis and alliteration detection tasks.
+An interactive web app visualizing results from our COMP 545 final project on context-aware LLM time series forecasting.
 
-🔗 [Live Demo](https://nlp-classifier-frontend.vercel.app) · [Backend Repo](https://github.com/Nusaibah-Rawnak/linear-text-classification)
+🔗 [Live Demo](https://llmbenchmark-frontend.vercel.app) · [Research Repo](https://github.com/YuJ-Li/COMP545_Final_Project)
+
+## Overview
+
+This dashboard presents findings from our evaluation of 5 models across 120 tasks and 12 domains, investigating whether textual context improves LLM forecasting performance at practical scales (3B–56B parameters).
 
 ## Features
 
-- **Sentiment Classification** — predicts whether a sentence is positive or negative
-- **Alliteration Detection** — predicts whether a sentence contains alliteration
-- **Confidence bar** — visual confidence score for each prediction
-- **Interactive results explorer** — bar charts comparing accuracy across 20+ experimental configurations
-- **About section** — summary of research findings with link to full report
+- **Model comparison** — NMAE and win rate charts comparing ARIMA, ETS, Llama 3B, Mistral 8x7B, and GPT-4o mini
+- **Deployment policy** — visual comparison of Always-Baseline vs Always-LLM vs XGBoost Selector vs Oracle
+- **Per-domain breakdown** — color-coded table showing where Mistral beats or hurts baseline performance
+- **About section** — research summary, team credits, and link to full paper
 
 ## Tech Stack
 
@@ -23,29 +26,30 @@ An interactive web app for real-time text classification, powered by models trai
 ## Running Locally
 
 ```bash
-git clone https://github.com/Nusaibah-Rawnak/nlp-classifier-frontend.git
-cd nlp-classifier-frontend
+git clone https://github.com/Nusaibah-Rawnak/LLMbenchmark-frontend.git
+cd LLMbenchmark-frontend
 npm install
 npm run dev
 ```
 
 Then open `http://localhost:5173`.
 
-> **Note**: The backend is hosted on Render's free tier and may take ~30 seconds to wake up on the first request after a period of inactivity.
-
 ## Project Structure
 ```
 src/
-├── App.tsx          # Main layout and sections
-├── Classifier.tsx   # Reusable prediction component
-├── Results.tsx      # Interactive results charts
-└── About.tsx        # About section with research summary
+├── App.tsx                # Main layout and sections
+├── ModelComparison.tsx    # NMAE and win rate charts
+├── PolicyComparison.tsx   # Selector vs oracle policy comparison
+├── DomainAnalysis.tsx     # Per-domain performance table
+└── About.tsx              # Research summary and team
 ```
+
+## Authors
+
+- Kazi Ashhab Rahman
+- Yujin Li  
+- Nusaibah Binte Rawnak
+
 ## Related
 
-- [Research repo + backend](https://github.com/Nusaibah-Rawnak/linear-text-classification) — dataset, experiment code, FastAPI backend, and full report
-
-## Author
-
-Nusaibah Binte Rawnak  
-[LinkedIn](https://linkedin.com/in/nusaibahrawnak) | [GitHub](https://github.com/Nusaibah-Rawnak)
+- [Research repo](https://github.com/YuJ-Li/COMP545_Final_Project) — full codebase, experiments, and paper
