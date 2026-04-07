@@ -20,8 +20,8 @@ export default function PolicyComparison() {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4">
         <p className="text-xs text-slate-500 font-mono leading-relaxed">
           <span className="text-slate-300">Key finding:</span> The XGBoost selector captures{" "}
-          <span className="text-teal-400 font-semibold">89.5% of oracle benefit</span> while
-          invoking LLMs on only <span className="text-teal-400 font-semibold">31% of tasks</span> —
+          <span className="text-violet-400 font-semibold">89.5% of oracle benefit</span> while
+          invoking LLMs on only <span className="text-violet-400 font-semibold">31% of tasks</span> -
           near-oracle accuracy at a fraction of the cost.
         </p>
       </div>
@@ -36,20 +36,20 @@ export default function PolicyComparison() {
             const pct = (d.nmae / 0.850) * 100
             return (
               <div key={d.policy} className="flex items-center gap-3">
-                <span className={`text-xs font-mono w-36 shrink-0 ${isSelector ? "text-teal-400 font-semibold" : isOracle ? "text-slate-500" : "text-slate-400"}`}>
+                <span className={`text-xs font-mono w-36 shrink-0 ${isSelector ? "text-violet-400 font-semibold" : isOracle ? "text-slate-500" : "text-slate-400"}`}>
                   {d.policy}
                 </span>
                 <div className="flex-1 bg-slate-800 rounded-full h-5 overflow-hidden">
                   <div
                     className={`h-5 rounded-full flex items-center pl-2 transition-all duration-700 ${
-                      isSelector ? "bg-teal-500" : isOracle ? "bg-slate-700" : "bg-slate-600"
+                      isSelector ? "bg-violet-400" : isOracle ? "bg-slate-700" : "bg-slate-600"
                     }`}
                     style={{ width: `${pct}%` }}
                   >
                     <span className="text-xs font-mono text-white">{d.nmae.toFixed(3)}</span>
                   </div>
                 </div>
-                <span className={`text-xs font-mono w-16 text-right shrink-0 ${isSelector ? "text-teal-400" : "text-slate-500"}`}>
+                <span className={`text-xs font-mono w-16 text-right shrink-0 ${isSelector ? "text-violet-400" : "text-slate-500"}`}>
                   {d.llmUsage}% LLM
                 </span>
               </div>
@@ -75,7 +75,7 @@ export default function PolicyComparison() {
               dataKey="oracleCaptured"
               name="Oracle captured (%)"
               radius={[4, 4, 0, 0]}
-              fill="#14b8a6"
+              fill="#8b5cf6"
             />
           </BarChart>
         </ResponsiveContainer>
@@ -88,7 +88,7 @@ export default function PolicyComparison() {
           { label: "Selector NMAE", value: "0.724", sub: "vs 0.699 oracle" },
         ].map(stat => (
           <div key={stat.label} className="bg-slate-800 rounded-2xl p-4 text-center">
-            <p className="text-2xl font-bold text-teal-400 font-mono">{stat.value}</p>
+            <p className="text-2xl font-bold text-violet-400 font-mono">{stat.value}</p>
             <p className="text-white text-sm font-medium mt-1">{stat.label}</p>
             <p className="text-slate-500 text-xs mt-1">{stat.sub}</p>
           </div>

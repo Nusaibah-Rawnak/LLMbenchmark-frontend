@@ -11,14 +11,14 @@ export default function About() {
         </p>
         <p>
           The core finding contradicts published assumptions: context provides{" "}
-          <span className="text-rose-400 font-semibold">negligible benefit at practical scales</span>.
+          <span className="text-amber-400 font-semibold">negligible benefit at practical scales</span>.
           Classical methods (ARIMA, ETS) win more tasks than any LLM, and scaling from
           3B to 56B parameters yields no statistically significant improvement (p = 0.204).
         </p>
         <p>
           To salvage LLM value, we trained an{" "}
-          <span className="text-teal-400 font-semibold">XGBoost selector</span> that routes
-          tasks to Mistral only when context is likely to help — capturing 89.5% of oracle
+          <span className="text-violet-400 font-semibold">XGBoost selector</span> that routes
+          tasks to Mistral only when context is likely to help - capturing 89.5% of oracle
           benefit while invoking LLMs on just 31% of tasks.
         </p>
       </div>
@@ -27,7 +27,7 @@ export default function About() {
         {[
           { name: "Kazi Ashhab Rahman", role: "ARIMA · ETS · Mixtral · XGBoost" },
           { name: "Yujin Li", role: "Llama · GPT-4o · Analysis" },
-          { name: "Nusaibah Binte Rawnak", role: "XGBoost · Writing · Analysis" },
+          { name: "Nusaibah Binte Rawnak", role: "XGBoost · Mixtral · Report · Analysis" },
         ].map(p => (
           <div key={p.name} className="flex flex-col gap-1">
             <span className="text-slate-300 text-xs">{p.name}</span>

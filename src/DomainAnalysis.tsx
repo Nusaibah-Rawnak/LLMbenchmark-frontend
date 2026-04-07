@@ -19,7 +19,7 @@ export default function DomainAnalysis() {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4">
         <p className="text-xs text-slate-500 font-mono leading-relaxed">
           <span className="text-slate-300">Key finding:</span> Mistral helps in solar and irradiance domains (high win rates)
-          but <span className="text-rose-400">hurts performance</span> in ATM, spike, and sensor domains.
+          but <span className="text-amber-400">hurts performance</span> in ATM, spike, and sensor domains.
           The selector identifies these patterns automatically.
         </p>
       </div>
@@ -27,10 +27,10 @@ export default function DomainAnalysis() {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
         <div className="flex gap-4 px-4 py-2 border-b border-slate-800">
           <span className="flex items-center gap-1.5 text-xs text-slate-400 font-mono">
-            <span className="w-2 h-2 rounded-sm bg-teal-500 inline-block" /> Mistral beats baseline
+            <span className="w-2 h-2 rounded-sm bg-violet-400 inline-block" /> Mistral beats baseline
           </span>
           <span className="flex items-center gap-1.5 text-xs text-slate-400 font-mono">
-            <span className="w-2 h-2 rounded-sm bg-rose-500 inline-block" /> Mistral worse
+            <span className="w-2 h-2 rounded-sm bg-amber-400 inline-block" /> Mistral worse
           </span>
         </div>
         <div className="overflow-x-auto">
@@ -52,10 +52,10 @@ export default function DomainAnalysis() {
                   <tr key={d.name} className="border-b border-slate-800/50 hover:bg-slate-800/40 transition-colors">
                     <td className="px-4 py-3 text-xs text-slate-400 font-mono">{d.name}</td>
                     <td className="px-4 py-3 font-mono text-slate-300">{d.baseline.toFixed(3)}</td>
-                    <td className={`px-4 py-3 font-mono font-semibold ${mistralBetter ? "text-teal-400" : "text-rose-400"}`}>
+                    <td className={`px-4 py-3 font-mono font-semibold ${mistralBetter ? "text-violet-400" : "text-amber-400"}`}>
                       {d.mistral.toFixed(3)}
                     </td>
-                    <td className={`px-4 py-3 font-mono ${selectorBetter ? "text-teal-400" : "text-slate-400"}`}>
+                    <td className={`px-4 py-3 font-mono ${selectorBetter ? "text-violet-400" : "text-slate-400"}`}>
                       {d.selector.toFixed(3)}
                     </td>
                     <td className="px-4 py-3 font-mono text-slate-500">{d.oracle.toFixed(3)}</td>
@@ -66,7 +66,7 @@ export default function DomainAnalysis() {
                         <div className="flex items-center gap-2">
                           <div className="w-16 bg-slate-800 rounded-full h-1.5">
                             <div
-                              className="bg-teal-500 h-1.5 rounded-full"
+                              className="bg-violet-400 h-1.5 rounded-full"
                               style={{ width: `${d.winRate}%` }}
                             />
                           </div>
