@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# NLP Classifier Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web app for real-time text classification, powered by models trained on sentiment analysis and alliteration detection tasks.
 
-Currently, two official plugins are available:
+🔗 [Live Demo](https://nlp-classifier-frontend.vercel.app) · [Backend Repo](https://github.com/Nusaibah-Rawnak/linear-text-classification)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Sentiment Classification** — predicts whether a sentence is positive or negative
+- **Alliteration Detection** — predicts whether a sentence contains alliteration
+- **Confidence bar** — visual confidence score for each prediction
+- **Interactive results explorer** — bar charts comparing accuracy across 20+ experimental configurations
+- **About section** — summary of research findings with link to full report
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React + TypeScript
+- Tailwind CSS
+- Recharts (data visualization)
+- Vite (build tool)
+- Deployed on Vercel
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Running Locally
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/Nusaibah-Rawnak/nlp-classifier-frontend.git
+cd nlp-classifier-frontend
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> **Note**: The backend is hosted on Render's free tier and may take ~30 seconds to wake up on the first request after a period of inactivity.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
 ```
+src/
+├── App.tsx          # Main layout and sections
+├── Classifier.tsx   # Reusable prediction component
+├── Results.tsx      # Interactive results charts
+└── About.tsx        # About section with research summary
+```
+## Related
+
+- [Research repo + backend](https://github.com/Nusaibah-Rawnak/linear-text-classification) — dataset, experiment code, FastAPI backend, and full report
+
+## Author
+
+Nusaibah Binte Rawnak  
+[LinkedIn](https://linkedin.com/in/nusaibahrawnak) | [GitHub](https://github.com/Nusaibah-Rawnak)
